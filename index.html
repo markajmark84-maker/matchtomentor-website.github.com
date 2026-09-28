@@ -61,283 +61,156 @@
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: var(--border); border-radius: 8px; }
         ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 8px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-light); }
 
-        /* ─── FULL-PAGE STUDENT LOGIN GATE ─── */
+        /* ═══════════════════════════════════════════
+           STUDENT LOGIN GATE (full-page overlay)
+           ═══════════════════════════════════════════ */
         .student-gate {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
+            position: fixed; inset: 0; z-index: 9999;
             background: linear-gradient(135deg, #4f2ee8 0%, #7c5cfc 55%, #a78bfa 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            overflow-y: auto;
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px; overflow-y: auto;
         }
         .student-gate.hidden { display: none; }
-
         .student-gate::before {
-            content: '';
-            position: absolute;
-            top: -200px; left: -200px;
+            content: ''; position: absolute; top: -200px; left: -200px;
             width: 600px; height: 600px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 50%;
+            background: rgba(255,255,255,0.06); border-radius: 50%;
             animation: floatBlob 12s ease-in-out infinite;
         }
         .student-gate::after {
-            content: '';
-            position: absolute;
-            bottom: -200px; right: -200px;
+            content: ''; position: absolute; bottom: -200px; right: -200px;
             width: 500px; height: 500px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
+            background: rgba(255,255,255,0.05); border-radius: 50%;
             animation: floatBlob 15s ease-in-out infinite reverse;
         }
         @keyframes floatBlob {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -30px) scale(1.08); }
+            0%, 100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(30px,-30px) scale(1.08); }
         }
-
         .student-gate-card {
-            background: var(--surface);
-            border-radius: 32px;
-            padding: 44px 40px 38px;
-            max-width: 440px;
-            width: 100%;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-            position: relative;
-            z-index: 1;
-            animation: gateSlideUp 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: var(--surface); border-radius: 32px;
+            padding: 44px 40px 38px; max-width: 440px; width: 100%;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+            position: relative; z-index: 1;
+            animation: gateSlideUp 0.55s cubic-bezier(0.34,1.56,0.64,1);
         }
         @keyframes gateSlideUp {
             from { transform: translateY(40px) scale(0.94); opacity: 0; }
             to { transform: translateY(0) scale(1); opacity: 1; }
         }
-
         .student-gate-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 6px;
+            display: flex; align-items: center; justify-content: center;
+            gap: 12px; font-size: 1.5rem; font-weight: 800;
+            color: var(--primary); margin-bottom: 6px;
         }
         .student-gate-logo i {
             background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            color: #fff;
-            padding: 11px;
-            border-radius: 14px;
-            font-size: 1.3rem;
-            box-shadow: 0 8px 22px rgba(79, 46, 232, 0.35);
+            color: #fff; padding: 11px; border-radius: 14px; font-size: 1.3rem;
+            box-shadow: 0 8px 22px rgba(79,46,232,0.35);
         }
         .student-gate-logo span { color: var(--text); }
-
-        .student-gate-heading {
-            text-align: center;
-            margin-bottom: 26px;
-        }
+        .student-gate-heading { text-align: center; margin-bottom: 26px; }
         .student-gate-heading h1 {
-            font-size: 1.55rem;
-            font-weight: 800;
-            color: var(--text);
-            margin-bottom: 6px;
-            line-height: 1.2;
+            font-size: 1.55rem; font-weight: 800; color: var(--text);
+            margin-bottom: 6px; line-height: 1.2;
         }
         .student-gate-heading p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            max-width: 300px;
-            margin: 0 auto;
+            font-size: 0.9rem; color: var(--text-muted);
+            max-width: 300px; margin: 0 auto;
         }
-
-        .student-field {
-            text-align: left;
-            margin-bottom: 14px;
-        }
+        .student-field { text-align: left; margin-bottom: 14px; }
         .student-field label {
-            display: block;
-            font-size: 0.72rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            color: var(--text-muted);
-            margin-bottom: 6px;
+            display: block; font-size: 0.72rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 0.6px;
+            color: var(--text-muted); margin-bottom: 6px;
         }
         .student-field .input-wrap { position: relative; }
         .student-field .input-wrap i.field-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            pointer-events: none;
-            transition: 0.2s;
+            position: absolute; left: 16px; top: 50%;
+            transform: translateY(-50%); color: var(--text-muted);
+            font-size: 0.9rem; pointer-events: none; transition: 0.2s;
         }
         .student-field input {
-            width: 100%;
-            padding: 14px 44px 14px 46px;
-            border-radius: 14px;
-            border: 1.5px solid var(--border);
-            background: var(--surface-2);
-            color: var(--text);
-            font-family: inherit;
-            font-size: 0.94rem;
-            outline: none;
+            width: 100%; padding: 14px 44px 14px 46px;
+            border-radius: 14px; border: 1.5px solid var(--border);
+            background: var(--surface-2); color: var(--text);
+            font-family: inherit; font-size: 0.94rem; outline: none;
             transition: 0.2s;
         }
         .student-field input:focus {
-            border-color: var(--primary);
-            background: var(--surface);
-            box-shadow: 0 0 0 4px rgba(79, 46, 232, 0.12);
-        }
-        .student-field input:focus + i.field-icon,
-        .student-field input:not(:placeholder-shown) + i.field-icon {
-            color: var(--primary);
+            border-color: var(--primary); background: var(--surface);
+            box-shadow: 0 0 0 4px rgba(79,46,232,0.12);
         }
         .student-field .toggle-pw {
-            position: absolute;
-            right: 14px;
-            top: 50%;
+            position: absolute; right: 14px; top: 50%;
             transform: translateY(-50%);
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 0.95rem;
+            background: transparent; border: none;
+            color: var(--text-muted); cursor: pointer; font-size: 0.95rem;
             padding: 4px;
         }
         .student-field .toggle-pw:hover { color: var(--primary); }
-
         .student-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 4px 0 18px;
-            font-size: 0.82rem;
-            flex-wrap: wrap;
-            gap: 8px;
+            display: flex; justify-content: space-between; align-items: center;
+            margin: 4px 0 18px; font-size: 0.82rem;
+            flex-wrap: wrap; gap: 8px;
         }
         .student-row label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-soft);
-            cursor: pointer;
-            font-weight: 500;
+            display: flex; align-items: center; gap: 8px;
+            color: var(--text-soft); cursor: pointer; font-weight: 500;
         }
         .student-row input[type="checkbox"] {
-            accent-color: var(--primary);
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
+            accent-color: var(--primary); width: 16px; height: 16px; cursor: pointer;
         }
-        .student-row a {
-            color: var(--primary);
-            font-weight: 600;
-            transition: 0.2s;
-        }
+        .student-row a { color: var(--primary); font-weight: 600; }
         .student-row a:hover { text-decoration: underline; }
-
         .student-btn {
-            width: 100%;
-            padding: 14px;
-            border-radius: 14px;
-            border: none;
-            background: var(--primary);
-            color: #fff;
-            font-family: inherit;
-            font-weight: 700;
-            font-size: 0.98rem;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 8px 22px rgba(79, 46, 232, 0.35);
+            width: 100%; padding: 14px; border-radius: 14px;
+            border: none; background: var(--primary); color: #fff;
+            font-family: inherit; font-weight: 700; font-size: 0.98rem;
+            cursor: pointer; transition: 0.2s;
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px; box-shadow: 0 8px 22px rgba(79,46,232,0.35);
         }
         .student-btn:hover {
-            background: #3b1fc9;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(79, 46, 232, 0.45);
+            background: #3b1fc9; transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(79,46,232,0.45);
         }
-        .student-btn:active { transform: translateY(0); }
         .student-btn.loading { pointer-events: none; opacity: 0.7; }
-
         .student-error {
-            background: var(--danger-soft);
-            color: #b91c1c;
-            padding: 11px 16px;
-            border-radius: 12px;
-            font-size: 0.83rem;
-            font-weight: 600;
-            margin-top: 14px;
-            display: none;
-            align-items: center;
-            gap: 9px;
+            background: var(--danger-soft); color: #b91c1c;
+            padding: 11px 16px; border-radius: 12px;
+            font-size: 0.83rem; font-weight: 600;
+            margin-top: 14px; display: none; align-items: center; gap: 9px;
         }
         .student-error.show { display: flex; animation: shake 0.4s ease; }
         body.dark .student-error { color: #ff6b6b; }
-
         .student-divider {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 22px 0 16px;
-            color: var(--text-muted);
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            display: flex; align-items: center; gap: 12px;
+            margin: 22px 0 16px; color: var(--text-muted);
+            font-size: 0.72rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px;
         }
-        .student-divider::before,
-        .student-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
+        .student-divider::before, .student-divider::after {
+            content: ''; flex: 1; height: 1px; background: var(--border);
         }
-
-        .student-demo {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
+        .student-demo { display: flex; gap: 10px; justify-content: center; }
         .student-demo-btn {
-            flex: 1;
-            padding: 10px 14px;
-            border-radius: 12px;
+            flex: 1; padding: 10px 14px; border-radius: 12px;
             border: 1.5px dashed var(--border-hover);
-            background: var(--surface-2);
-            color: var(--text-soft);
-            font-family: inherit;
-            font-size: 0.78rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
+            background: var(--surface-2); color: var(--text-soft);
+            font-family: inherit; font-size: 0.78rem; font-weight: 700;
+            cursor: pointer; transition: 0.2s;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
         }
         .student-demo-btn:hover {
-            background: var(--primary-soft);
-            color: var(--primary);
-            border-color: var(--primary);
-            border-style: solid;
+            background: var(--primary-soft); color: var(--primary);
+            border-color: var(--primary); border-style: solid;
         }
-        .student-demo-btn i { font-size: 0.85rem; }
-
         .student-footer-note {
-            text-align: center;
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            margin-top: 18px;
-            line-height: 1.5;
+            text-align: center; font-size: 0.72rem;
+            color: var(--text-muted); margin-top: 18px; line-height: 1.5;
         }
         .student-footer-note strong { color: var(--text-soft); }
 
@@ -349,16 +222,11 @@
 
         /* ─── App (hidden until login) ─── */
         .app {
-            max-width: 1200px;
-            margin: 0 auto;
-            opacity: 0;
-            pointer-events: none;
+            max-width: 1200px; margin: 0 auto;
+            opacity: 0; pointer-events: none;
             transition: opacity 0.4s ease;
         }
-        .app.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .app.show { opacity: 1; pointer-events: auto; }
         body.app-locked { overflow: hidden; }
 
         /* ─── Header ─── */
@@ -376,7 +244,7 @@
             background: linear-gradient(135deg, var(--primary-light), var(--primary));
             color: #fff; padding: 10px; border-radius: 14px; font-size: 1.3rem;
         }
-        .logo span { color: var(--text); }
+        .logo span { color: var(--text); transition: color 0.3s; }
         .header-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
         .header-actions .badge {
             background: var(--primary-soft); padding: 6px 16px; border-radius: 50px;
@@ -398,66 +266,52 @@
             display: flex; align-items: center; justify-content: center;
             color: #fff; font-weight: 700; font-size: 1.05rem;
             cursor: pointer; transition: 0.2s;
-            border: 2px solid transparent;
-            position: relative;
+            border: 2px solid transparent; position: relative;
         }
         .user-avatar:hover { transform: scale(1.05); border-color: var(--primary-soft); }
         .user-avatar.active {
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(79, 46, 232, 0.15);
+            box-shadow: 0 0 0 4px rgba(79,46,232,0.15);
         }
         .user-avatar .status-indicator {
             position: absolute; bottom: -2px; right: -2px;
             width: 14px; height: 14px; border-radius: 50%;
             background: var(--success); border: 2.5px solid var(--surface);
         }
-
         .user-dropdown {
-            position: absolute;
-            top: calc(100% + 12px);
-            right: 0;
-            min-width: 280px;
-            background: var(--surface);
-            border: 1.5px solid var(--border);
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(79, 46, 232, 0.18);
-            z-index: 500;
-            opacity: 0;
+            position: absolute; top: calc(100% + 12px); right: 0;
+            min-width: 280px; background: var(--surface);
+            border: 1.5px solid var(--border); border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(79,46,232,0.18);
+            z-index: 500; opacity: 0;
             transform: translateY(-10px) scale(0.97);
             pointer-events: none;
-            transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
             overflow: hidden;
         }
         .user-dropdown.open {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            pointer-events: auto;
+            opacity: 1; transform: translateY(0) scale(1); pointer-events: auto;
         }
         .user-dropdown-header {
             padding: 18px 20px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: #fff;
-            display: flex; align-items: center; gap: 14px;
+            color: #fff; display: flex; align-items: center; gap: 14px;
             position: relative; overflow: hidden;
         }
         .user-dropdown-header::before {
-            content: ''; position: absolute;
-            top: -40px; right: -40px;
+            content: ''; position: absolute; top: -40px; right: -40px;
             width: 120px; height: 120px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
+            background: rgba(255,255,255,0.08); border-radius: 50%;
         }
         .user-dropdown-avatar {
             width: 52px; height: 52px; border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255,255,255,0.2);
             display: flex; align-items: center; justify-content: center;
             font-size: 1.3rem; font-weight: 800;
-            border: 2.5px solid rgba(255, 255, 255, 0.4);
+            border: 2.5px solid rgba(255,255,255,0.4);
             flex-shrink: 0; position: relative; z-index: 1;
         }
-        .user-dropdown-info {
-            flex: 1; min-width: 0; position: relative; z-index: 1;
-        }
+        .user-dropdown-info { flex: 1; min-width: 0; position: relative; z-index: 1; }
         .user-dropdown-info h4 {
             font-size: 1rem; font-weight: 800;
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
@@ -468,7 +322,7 @@
         }
         .user-dropdown-badge {
             display: inline-flex; align-items: center; gap: 4px;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255,255,255,0.25);
             padding: 2px 10px; border-radius: 50px;
             font-size: 0.65rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 0.5px;
@@ -480,9 +334,8 @@
             padding: 11px 14px; border-radius: 12px;
             cursor: pointer; transition: 0.15s;
             color: var(--text); font-size: 0.9rem;
-            font-weight: 500; border: none;
-            background: transparent; width: 100%;
-            text-align: left; font-family: inherit;
+            font-weight: 500; border: none; background: transparent;
+            width: 100%; text-align: left; font-family: inherit;
         }
         .user-menu-item:hover { background: var(--primary-soft); color: var(--primary); }
         .user-menu-item .menu-icon {
@@ -500,9 +353,7 @@
         .user-menu-item .menu-arrow {
             color: var(--text-muted); font-size: 0.75rem; transition: 0.15s;
         }
-        .user-menu-item:hover .menu-arrow {
-            color: var(--primary); transform: translateX(2px);
-        }
+        .user-menu-item:hover .menu-arrow { color: var(--primary); transform: translateX(2px); }
         .user-menu-divider { height: 1px; background: var(--border); margin: 6px 12px; }
         .user-menu-item.danger:hover { background: var(--danger-soft); color: #b91c1c; }
         .user-menu-item.danger .menu-icon { background: var(--danger-soft); color: var(--danger); }
@@ -513,7 +364,7 @@
         .nav-tabs {
             display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 32px;
             background: var(--surface); padding: 6px; border-radius: 18px;
-            box-shadow: 0 4px 20px rgba(79, 46, 232, 0.08);
+            box-shadow: 0 4px 20px rgba(79,46,232,0.08);
         }
         .nav-tab {
             padding: 10px 22px; border-radius: 14px; font-weight: 600;
@@ -530,7 +381,7 @@
         .nav-tab:hover { background: var(--primary-soft); color: var(--primary); }
         .nav-tab.active {
             background: var(--primary); color: #fff;
-            box-shadow: 0 4px 14px rgba(79, 46, 232, 0.3);
+            box-shadow: 0 4px 14px rgba(79,46,232,0.3);
         }
         .nav-tab.active .lock-icon { opacity: 1; }
 
@@ -544,7 +395,7 @@
         /* ─── Card ─── */
         .card {
             background: var(--surface); border-radius: 24px; padding: 24px 28px;
-            box-shadow: 0 4px 24px rgba(79, 46, 232, 0.06);
+            box-shadow: 0 4px 24px rgba(79,46,232,0.06);
             border: 1px solid var(--border); transition: 0.3s;
         }
         .card:hover { border-color: var(--border-hover); }
@@ -569,7 +420,7 @@
             color: #fff; border-radius: 28px; padding: 40px 44px;
             margin-bottom: 32px; display: flex; flex-wrap: wrap;
             align-items: center; justify-content: space-between;
-            box-shadow: 0 12px 40px rgba(79, 46, 232, 0.25);
+            box-shadow: 0 12px 40px rgba(79,46,232,0.25);
         }
         .hero-text h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 6px; }
         .hero-text p { opacity: 0.9; font-size: 1.05rem; max-width: 440px; }
@@ -578,9 +429,9 @@
             padding: 14px 34px; border-radius: 60px; font-weight: 700;
             font-size: 1rem; display: flex; align-items: center; gap: 10px;
             cursor: pointer; transition: 0.25s;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
         }
-        .hero-btn:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18); }
+        .hero-btn:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(0,0,0,0.18); }
 
         /* ─── Mentor Grid ─── */
         .mentor-grid {
@@ -594,13 +445,13 @@
         }
         .mentor-card:hover {
             transform: translateY(-4px); border-color: var(--primary-light);
-            box-shadow: 0 8px 28px rgba(79, 46, 232, 0.1);
+            box-shadow: 0 8px 28px rgba(79,46,232,0.1);
         }
         .mentor-avatar {
             width: 90px; height: 90px; border-radius: 50%;
             margin: 0 auto 12px; position: relative;
             overflow: hidden; flex-shrink: 0;
-            box-shadow: 0 4px 14px rgba(79, 46, 232, 0.15);
+            box-shadow: 0 4px 14px rgba(79,46,232,0.15);
             background: var(--primary-soft);
         }
         .mentor-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -616,7 +467,7 @@
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: #fff; font-size: 0.7rem; font-weight: 700;
             padding: 4px 10px; border-radius: 50px;
-            box-shadow: 0 2px 8px rgba(79, 46, 232, 0.3);
+            box-shadow: 0 2px 8px rgba(79,46,232,0.3);
         }
         .mentor-card h4 { font-size: 1rem; margin-bottom: 2px; }
         .mentor-card .title { font-size: 0.8rem; color: var(--text-muted); }
@@ -633,9 +484,7 @@
             background: var(--primary-soft); padding: 2px 12px; border-radius: 50px;
             font-size: 0.7rem; font-weight: 600; color: var(--primary);
         }
-        .mentor-card-actions {
-            display: flex; gap: 6px; justify-content: center;
-        }
+        .mentor-card-actions { display: flex; gap: 6px; justify-content: center; }
         .match-btn, .profile-btn {
             border: none; padding: 8px 14px; border-radius: 50px;
             font-weight: 600; font-size: 0.75rem; cursor: pointer;
@@ -655,7 +504,9 @@
         .filter-btn:hover { background: var(--border-hover); }
         .filter-btn.active { background: var(--primary); color: #fff; }
 
-        /* ─── Admin Login ─── */
+        /* ═══════════════════════════════════════════
+           ADMIN LOGIN SCREEN
+           ═══════════════════════════════════════════ */
         .login-wrapper {
             display: flex; align-items: center; justify-content: center;
             min-height: 480px; padding: 40px 20px;
@@ -663,20 +514,18 @@
         .login-card {
             background: var(--surface);
             border: 1.5px solid var(--border);
-            border-radius: 28px;
-            padding: 44px 40px;
-            max-width: 420px;
-            width: 100%;
-            box-shadow: 0 20px 60px rgba(79, 46, 232, 0.12);
+            border-radius: 28px; padding: 44px 40px;
+            max-width: 420px; width: 100%;
+            box-shadow: 0 20px 60px rgba(79,46,232,0.12);
             text-align: center;
-            animation: gateSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: gateSlideUp 0.4s cubic-bezier(0.34,1.56,0.64,1);
         }
         .login-icon {
             width: 76px; height: 76px; border-radius: 22px;
             background: linear-gradient(135deg, var(--primary-light), var(--primary));
             color: #fff; display: flex; align-items: center; justify-content: center;
             font-size: 2rem; margin: 0 auto 20px;
-            box-shadow: 0 10px 30px rgba(79, 46, 232, 0.35);
+            box-shadow: 0 10px 30px rgba(79,46,232,0.35);
         }
         .login-card h2 {
             font-size: 1.5rem; font-weight: 800;
@@ -708,7 +557,7 @@
         }
         .login-field input:focus {
             border-color: var(--primary); background: var(--surface);
-            box-shadow: 0 0 0 4px rgba(79, 46, 232, 0.1);
+            box-shadow: 0 0 0 4px rgba(79,46,232,0.1);
         }
         .login-field .toggle-pw {
             position: absolute; right: 14px; top: 50%;
@@ -718,7 +567,6 @@
             padding: 4px;
         }
         .login-field .toggle-pw:hover { color: var(--primary); }
-
         .login-btn {
             width: 100%; padding: 14px; border-radius: 14px;
             border: none; background: var(--primary); color: #fff;
@@ -726,13 +574,12 @@
             cursor: pointer; transition: 0.2s;
             display: flex; align-items: center; justify-content: center;
             gap: 8px; margin-top: 8px;
-            box-shadow: 0 6px 18px rgba(79, 46, 232, 0.3);
+            box-shadow: 0 6px 18px rgba(79,46,232,0.3);
         }
         .login-btn:hover {
             background: #3b1fc9; transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(79, 46, 232, 0.4);
+            box-shadow: 0 8px 24px rgba(79,46,232,0.4);
         }
-
         .login-error {
             background: var(--danger-soft); color: #b91c1c;
             padding: 10px 14px; border-radius: 12px;
@@ -742,7 +589,6 @@
         }
         .login-error.show { display: flex; }
         body.dark .login-error { color: #ff6b6b; }
-
         .login-hint {
             margin-top: 22px; padding-top: 18px;
             border-top: 1px dashed var(--border);
@@ -755,14 +601,14 @@
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: #fff; border-radius: 28px; padding: 32px 38px;
             margin-bottom: 24px; position: relative; overflow: hidden;
-            box-shadow: 0 16px 44px rgba(79, 46, 232, 0.28);
+            box-shadow: 0 16px 44px rgba(79,46,232,0.28);
             display: flex; align-items: center; justify-content: space-between;
             flex-wrap: wrap; gap: 20px;
         }
         .admin-header::before {
             content: ''; position: absolute; top: -80px; right: -80px;
             width: 240px; height: 240px;
-            background: rgba(255, 255, 255, 0.08); border-radius: 50%;
+            background: rgba(255,255,255,0.08); border-radius: 50%;
         }
         .admin-header-content { position: relative; z-index: 1; }
         .admin-header h1 {
@@ -779,18 +625,16 @@
             font-family: inherit; font-weight: 800; font-size: 0.9rem;
             cursor: pointer; transition: 0.25s;
             display: inline-flex; align-items: center; gap: 10px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         }
         .admin-header .btn-add { background: #fff; color: var(--primary); }
         .admin-header .btn-add:hover { transform: translateY(-3px) scale(1.03); }
         .admin-header .btn-logout {
-            background: rgba(255, 255, 255, 0.15);
-            color: #fff;
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255,255,255,0.15); color: #fff;
+            border: 1.5px solid rgba(255,255,255,0.3);
         }
         .admin-header .btn-logout:hover {
-            background: rgba(255, 255, 255, 0.28);
-            transform: translateY(-3px);
+            background: rgba(255,255,255,0.28); transform: translateY(-3px);
         }
 
         .stats-grid {
@@ -805,7 +649,7 @@
         }
         .stat-card:hover {
             border-color: var(--primary-light); transform: translateY(-3px);
-            box-shadow: 0 10px 28px rgba(79, 46, 232, 0.1);
+            box-shadow: 0 10px 28px rgba(79,46,232,0.1);
         }
         .stat-card .icon {
             width: 42px; height: 42px; border-radius: 12px;
@@ -819,12 +663,11 @@
             font-size: 0.78rem; color: var(--text-muted);
             font-weight: 600; margin-top: 4px;
         }
-
         .admin-toolbar {
             background: var(--surface); border: 1.5px solid var(--border);
             border-radius: 20px; padding: 16px 20px; margin-bottom: 20px;
             display: flex; flex-direction: column; gap: 12px;
-            box-shadow: 0 4px 20px rgba(79, 46, 232, 0.05);
+            box-shadow: 0 4px 20px rgba(79,46,232,0.05);
         }
         .search-row { display: flex; gap: 10px; flex-wrap: wrap; }
         .search-box { flex: 1; min-width: 220px; position: relative; }
@@ -842,9 +685,8 @@
         }
         .search-box input:focus {
             border-color: var(--primary); background: var(--surface);
-            box-shadow: 0 0 0 4px rgba(79, 46, 232, 0.1);
+            box-shadow: 0 0 0 4px rgba(79,46,232,0.1);
         }
-
         .chip {
             padding: 8px 14px; border-radius: 50px; font-size: 0.76rem;
             font-weight: 600; background: var(--primary-soft);
@@ -855,13 +697,12 @@
         .chip:hover { background: var(--border-hover); transform: translateY(-1px); }
         .chip.active {
             background: var(--primary); color: #fff;
-            box-shadow: 0 4px 12px rgba(79, 46, 232, 0.3);
+            box-shadow: 0 4px 12px rgba(79,46,232,0.3);
         }
-
         .table-wrap {
             background: var(--surface); border: 1.5px solid var(--border);
             border-radius: 22px; overflow: hidden;
-            box-shadow: 0 4px 20px rgba(79, 46, 232, 0.05);
+            box-shadow: 0 4px 20px rgba(79,46,232,0.05);
         }
         .table-head {
             display: flex; align-items: center; justify-content: space-between;
@@ -907,10 +748,7 @@
             font-weight: 700; color: var(--text);
             font-size: 0.9rem; line-height: 1.3;
         }
-        .mentor-cell-field {
-            font-size: 0.74rem; color: var(--text-muted); margin-top: 2px;
-        }
-
+        .mentor-cell-field { font-size: 0.74rem; color: var(--text-muted); margin-top: 2px; }
         .badge {
             display: inline-flex; align-items: center; gap: 5px;
             padding: 4px 12px; border-radius: 50px;
@@ -939,10 +777,7 @@
         .row-btn.toggle-off:hover { background: var(--warning); color: #fff; }
         .row-btn.delete { background: var(--danger-soft); color: #b91c1c; }
         .row-btn.delete:hover { background: var(--danger); color: #fff; }
-
-        .empty-row {
-            text-align: center; padding: 50px 20px; color: var(--text-muted);
-        }
+        .empty-row { text-align: center; padding: 50px 20px; color: var(--text-muted); }
         .empty-row i {
             font-size: 2.2rem; color: var(--primary-light);
             opacity: 0.5; display: block; margin-bottom: 12px;
@@ -950,7 +785,7 @@
 
         /* ─── Modal ─── */
         .modal-backdrop {
-            position: fixed; inset: 0; background: rgba(30, 27, 46, 0.7);
+            position: fixed; inset: 0; background: rgba(30,27,46,0.7);
             backdrop-filter: blur(6px); z-index: 1000;
             display: flex; align-items: center; justify-content: center;
             padding: 20px; animation: fadeIn 0.2s ease; overflow-y: auto;
@@ -960,8 +795,8 @@
             background: var(--surface); border-radius: 28px;
             max-width: 640px; width: 100%; max-height: 92vh;
             overflow-y: auto; position: relative;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-            animation: gateSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            animation: gateSlideUp 0.3s cubic-bezier(0.34,1.56,0.64,1);
             margin: auto;
         }
         .modal-head {
@@ -983,14 +818,9 @@
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
         }
-        .modal-close:hover {
-            background: var(--primary); color: #fff; transform: rotate(90deg);
-        }
+        .modal-close:hover { background: var(--primary); color: #fff; transform: rotate(90deg); }
         .modal-body { padding: 22px 28px 28px; }
-
-        .form-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
-        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
         @media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
         .form-group { display: flex; flex-direction: column; gap: 6px; }
         .form-group.full { grid-column: 1 / -1; }
@@ -1009,11 +839,10 @@
         }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             border-color: var(--primary); background: var(--surface);
-            box-shadow: 0 0 0 4px rgba(79, 46, 232, 0.1);
+            box-shadow: 0 0 0 4px rgba(79,46,232,0.1);
         }
         .form-group textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
         .form-help { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
-
         .color-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
         .color-swatch {
             width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
@@ -1021,7 +850,6 @@
         }
         .color-swatch:hover { transform: scale(1.15); }
         .color-swatch.active { border-color: var(--text); }
-
         .avatar-preview-row {
             display: flex; align-items: center; gap: 14px;
             padding: 12px 16px; background: var(--surface-2);
@@ -1031,23 +859,13 @@
         .avatar-preview {
             width: 58px; height: 58px; border-radius: 50%;
             overflow: hidden; flex-shrink: 0;
-            background: var(--primary-soft);
-            border: 3px solid var(--border);
+            background: var(--primary-soft); border: 3px solid var(--border);
         }
-        .avatar-preview img {
-            width: 100%; height: 100%; object-fit: cover; display: block;
-        }
+        .avatar-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .avatar-preview-info { flex: 1; min-width: 0; }
-        .avatar-preview-info h4 {
-            font-size: 0.92rem; font-weight: 800; margin-bottom: 2px;
-        }
-        .avatar-preview-info p {
-            font-size: 0.75rem; color: var(--text-muted);
-        }
-
-        .modal-actions {
-            display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap;
-        }
+        .avatar-preview-info h4 { font-size: 0.92rem; font-weight: 800; margin-bottom: 2px; }
+        .avatar-preview-info p { font-size: 0.75rem; color: var(--text-muted); }
+        .modal-actions { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
         .btn {
             flex: 1; min-width: 130px; padding: 12px 20px;
             border-radius: 12px; border: none; font-family: inherit;
@@ -1057,17 +875,16 @@
         }
         .btn-primary {
             background: var(--primary); color: #fff;
-            box-shadow: 0 4px 12px rgba(79, 46, 232, 0.25);
+            box-shadow: 0 4px 12px rgba(79,46,232,0.25);
         }
         .btn-primary:hover {
             background: #3b1fc9; transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(79, 46, 232, 0.35);
+            box-shadow: 0 6px 18px rgba(79,46,232,0.35);
         }
         .btn-secondary { background: var(--primary-soft); color: var(--primary); }
         .btn-secondary:hover { background: var(--border-hover); transform: translateY(-2px); }
         .btn-danger { background: var(--danger-soft); color: #b91c1c; }
         .btn-danger:hover { background: var(--danger); color: #fff; }
-
         .confirm-body { text-align: center; padding: 12px 0 4px; }
         .confirm-icon {
             width: 64px; height: 64px; border-radius: 50%;
@@ -1075,15 +892,12 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 1.6rem; margin: 0 auto 14px;
         }
-        .confirm-body p {
-            font-size: 0.88rem; color: var(--text-muted);
-            margin-bottom: 4px;
-        }
+        .confirm-body p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 4px; }
         .confirm-body strong { color: var(--text); }
 
         /* ─── Mentor Profile Modal ─── */
         .mentor-modal-backdrop {
-            position: fixed; inset: 0; background: rgba(30, 27, 46, 0.6);
+            position: fixed; inset: 0; background: rgba(30,27,46,0.6);
             backdrop-filter: blur(4px); z-index: 1001;
             display: flex; align-items: center; justify-content: center;
             padding: 20px; animation: fadeIn 0.2s ease;
@@ -1092,7 +906,7 @@
             background: var(--surface); border-radius: 24px; padding: 0;
             max-width: 620px; width: 100%; max-height: 90vh;
             overflow-y: auto; position: relative;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             animation: gateSlideUp 0.3s ease;
         }
         .mentor-modal-close {
@@ -1103,12 +917,8 @@
             display: flex; align-items: center; justify-content: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
-        .mentor-modal-close:hover {
-            background: var(--primary); color: #fff; transform: rotate(90deg);
-        }
-        .mentor-modal-banner {
-            height: 110px; border-radius: 24px 24px 0 0; position: relative;
-        }
+        .mentor-modal-close:hover { background: var(--primary); color: #fff; transform: rotate(90deg); }
+        .mentor-modal-banner { height: 110px; border-radius: 24px 24px 0 0; position: relative; }
         .mentor-modal-body { padding: 0 32px 32px; }
         .mentor-modal-avatar-wrap {
             display: flex; align-items: flex-end; gap: 18px;
@@ -1121,9 +931,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.15);
             background: var(--primary-soft);
         }
-        .mentor-modal-avatar img {
-            width: 100%; height: 100%; object-fit: cover; display: block;
-        }
+        .mentor-modal-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .mentor-modal-avatar .online-dot {
             position: absolute; bottom: 6px; right: 6px;
             width: 20px; height: 20px; border-radius: 50%;
@@ -1132,31 +940,21 @@
         .mentor-modal-avatar .online-dot.online { background: var(--success); }
         .mentor-modal-avatar .online-dot.offline { background: #95a5a6; }
         .mentor-modal-head-info { flex: 1; padding-bottom: 6px; }
-        .mentor-modal-head-info h2 {
-            font-size: 1.5rem; font-weight: 800; margin-bottom: 2px;
-        }
-        .mentor-modal-head-info .field {
-            font-size: 0.9rem; color: var(--text-muted); font-weight: 500;
-        }
+        .mentor-modal-head-info h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 2px; }
+        .mentor-modal-head-info .field { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
         .mentor-modal-match-badge {
             display: inline-flex; align-items: center; gap: 6px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: #fff; font-size: 0.75rem; font-weight: 700;
             padding: 5px 14px; border-radius: 50px; margin-top: 8px;
         }
-        .mentor-modal-stats {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 12px; margin: 20px 0;
-        }
+        .mentor-modal-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0; }
         @media (max-width: 520px) { .mentor-modal-stats { grid-template-columns: repeat(2, 1fr); } }
         .mentor-stat {
             background: var(--surface-2); border: 1px solid var(--border);
             border-radius: 16px; padding: 12px 10px; text-align: center;
         }
-        .mentor-stat .stat-value {
-            font-size: 1.2rem; font-weight: 800; color: var(--primary);
-            line-height: 1.2;
-        }
+        .mentor-stat .stat-value { font-size: 1.2rem; font-weight: 800; color: var(--primary); line-height: 1.2; }
         .mentor-stat .stat-label {
             font-size: 0.65rem; text-transform: uppercase;
             letter-spacing: 0.5px; color: var(--text-muted);
@@ -1169,12 +967,8 @@
             display: flex; align-items: center; gap: 8px;
         }
         .mentor-modal-section i { color: var(--primary); }
-        .mentor-modal-bio {
-            font-size: 0.92rem; color: var(--text-soft); line-height: 1.7;
-        }
-        .mentor-modal-info-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-        }
+        .mentor-modal-bio { font-size: 0.92rem; color: var(--text-soft); line-height: 1.7; }
+        .mentor-modal-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         @media (max-width: 480px) { .mentor-modal-info-grid { grid-template-columns: 1fr; } }
         .mentor-info-item {
             display: flex; align-items: flex-start; gap: 10px;
@@ -1189,9 +983,7 @@
             font-size: 0.65rem; text-transform: uppercase;
             letter-spacing: 0.5px; color: var(--text-muted); font-weight: 700;
         }
-        .mentor-info-item .info-value {
-            font-size: 0.88rem; font-weight: 600; color: var(--text);
-        }
+        .mentor-info-item .info-value { font-size: 0.88rem; font-weight: 600; color: var(--text); }
         .mentor-modal-tags { display: flex; flex-wrap: wrap; gap: 8px; }
         .mentor-modal-tags span {
             background: var(--primary-soft); color: var(--primary);
@@ -1209,9 +1001,7 @@
         .mentor-review-name { font-size: 0.85rem; font-weight: 700; }
         .mentor-review-stars { color: #f6d186; font-size: 0.75rem; }
         .mentor-review-text { font-size: 0.85rem; color: var(--text-soft); line-height: 1.5; }
-        .mentor-modal-actions {
-            display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap;
-        }
+        .mentor-modal-actions { display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
         .mentor-modal-btn {
             flex: 1; min-width: 160px; padding: 13px 20px;
             border-radius: 14px; border: none; font-family: inherit;
@@ -1230,7 +1020,7 @@
             width: 400px; max-width: calc(100vw - 32px);
             height: 600px; max-height: calc(100vh - 60px);
             background: var(--surface); border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(30, 27, 46, 0.25);
+            box-shadow: 0 20px 60px rgba(30,27,46,0.25);
             border: 1px solid var(--border);
             display: flex; flex-direction: column;
             z-index: 1002; overflow: hidden;
@@ -1291,7 +1081,7 @@
         .chat-bubble.mentor {
             background: var(--surface); color: var(--text);
             border-bottom-left-radius: 4px; align-self: flex-start;
-            box-shadow: 0 2px 8px rgba(79, 46, 232, 0.06);
+            box-shadow: 0 2px 8px rgba(79,46,232,0.06);
         }
         .chat-bubble.user {
             background: var(--primary); color: #fff;
@@ -1305,7 +1095,7 @@
             align-self: flex-start; display: flex; gap: 4px;
             padding: 12px 16px; background: var(--surface);
             border-radius: 18px; border-bottom-left-radius: 4px;
-            box-shadow: 0 2px 8px rgba(79, 46, 232, 0.06);
+            box-shadow: 0 2px 8px rgba(79,46,232,0.06);
         }
         .chat-typing span {
             width: 6px; height: 6px; border-radius: 50%;
@@ -1341,8 +1131,8 @@
             animation: pulseMic 1s infinite;
         }
         @keyframes pulseMic {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 87, 108, 0.5); }
-            50% { box-shadow: 0 0 0 10px rgba(245, 87, 108, 0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245,87,108,0.5); }
+            50% { box-shadow: 0 0 0 10px rgba(245,87,108,0); }
         }
         .chat-send-btn {
             width: 40px; height: 40px; border-radius: 50%; border: none;
@@ -1357,9 +1147,7 @@
             padding: 0 16px 8px; background: transparent;
         }
         .chat-speaking-indicator.active { display: flex; }
-        .chat-speaking-indicator .wave {
-            display: flex; gap: 2px; align-items: flex-end; height: 14px;
-        }
+        .chat-speaking-indicator .wave { display: flex; gap: 2px; align-items: flex-end; height: 14px; }
         .chat-speaking-indicator .wave span {
             width: 3px; background: var(--primary); border-radius: 2px;
             animation: waveAnim 1s infinite ease-in-out;
@@ -1377,7 +1165,7 @@
             position: fixed; bottom: 30px; right: 30px;
             background: var(--text); color: #fff; padding: 14px 26px;
             border-radius: 16px; font-weight: 500; font-size: 0.88rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
             transform: translateY(80px); opacity: 0;
             transition: 0.4s ease; pointer-events: none; z-index: 999;
             max-width: 90%;
@@ -1391,12 +1179,12 @@
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: #fff; padding: 18px 28px 18px 24px;
             border-radius: 60px;
-            box-shadow: 0 16px 48px rgba(79, 46, 232, 0.45);
+            box-shadow: 0 16px 48px rgba(79,46,232,0.45);
             display: flex; align-items: center; gap: 16px;
             z-index: 10000; max-width: 680px; width: calc(100% - 32px);
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+            transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease;
             opacity: 0; pointer-events: none;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255,255,255,0.15);
             backdrop-filter: blur(8px);
         }
         .daily-tip-popup.show {
@@ -1404,7 +1192,7 @@
         }
         .daily-tip-popup .tip-icon {
             font-size: 2rem; flex-shrink: 0;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255,255,255,0.15);
             width: 52px; height: 52px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
         }
@@ -1419,14 +1207,14 @@
             margin-top: 2px; word-wrap: break-word;
         }
         .daily-tip-popup .tip-dismiss {
-            background: rgba(255, 255, 255, 0.2); border: none;
+            background: rgba(255,255,255,0.2); border: none;
             color: #fff; width: 36px; height: 36px;
             border-radius: 50%; cursor: pointer; font-size: 0.95rem;
             transition: 0.2s; flex-shrink: 0;
             display: flex; align-items: center; justify-content: center;
         }
         .daily-tip-popup .tip-dismiss:hover {
-            background: rgba(255, 255, 255, 0.35);
+            background: rgba(255,255,255,0.35);
             transform: scale(1.08) rotate(90deg);
         }
 
@@ -1461,7 +1249,9 @@
 </head>
 <body class="app-locked">
 
-    <!-- ━━━ STUDENT LOGIN GATE ━━━ -->
+    <!-- ═══════════════════════════════════════════
+         STUDENT LOGIN GATE
+         ═══════════════════════════════════════════ -->
     <div class="student-gate" id="studentGate">
         <div class="student-gate-card">
             <div class="student-gate-logo">
@@ -1553,6 +1343,10 @@
                 <button class="dark-toggle" onclick="toggleDark()" title="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                 </button>
+
+                <!-- ═══════════════════════════════════
+                     USER AVATAR + FUNCTIONAL DROPDOWN
+                     ═══════════════════════════════════ -->
                 <div class="user-menu-wrap">
                     <div class="user-avatar" id="userAvatar" onclick="toggleUserMenu(event)" title="Account menu">
                         <span id="userInitials">JD</span>
@@ -1564,7 +1358,7 @@
                             <div class="user-dropdown-info">
                                 <h4 id="dropdownName">John Doe</h4>
                                 <p id="dropdownEmail">john.doe@example.com</p>
-                                <span class="user-dropdown-badge">
+                                <span class="user-dropdown-badge" id="dropdownRoleBadge">
                                     <i class="fas fa-graduation-cap"></i> Student
                                 </span>
                             </div>
@@ -1631,7 +1425,9 @@
             <button class="nav-tab" data-section="tips"><i class="fas fa-lightbulb"></i> Tips</button>
         </nav>
 
-        <!-- MATCH -->
+        <!-- ═══════════════════════════════════
+             MATCH SECTION
+             ═══════════════════════════════════ -->
         <section class="section active" id="section-match">
             <div class="hero">
                 <div class="hero-text">
@@ -1655,13 +1451,17 @@
             </div>
         </section>
 
-        <!-- ADMIN -->
+        <!-- ═══════════════════════════════════
+             MENTOR ADMIN (LOGIN-GATED)
+             ═══════════════════════════════════ -->
         <section class="section" id="section-admin">
+            <!-- ADMIN LOGIN VIEW -->
             <div id="adminLoginView" class="login-wrapper">
                 <div class="login-card">
                     <div class="login-icon"><i class="fas fa-lock"></i></div>
                     <h2>Admin Access Only</h2>
                     <p class="subtitle">Enter your credentials to manage the mentor directory.</p>
+
                     <div class="login-field">
                         <label>Username</label>
                         <div class="input-wrap">
@@ -1669,6 +1469,7 @@
                             <input type="text" id="loginUsername" placeholder="Enter username" onkeydown="if(event.key==='Enter') attemptLogin()" autocomplete="username" />
                         </div>
                     </div>
+
                     <div class="login-field">
                         <label>Password</label>
                         <div class="input-wrap">
@@ -1679,19 +1480,23 @@
                             </button>
                         </div>
                     </div>
+
                     <button class="login-btn" onclick="attemptLogin()">
                         <i class="fas fa-sign-in-alt"></i> Log In
                     </button>
+
                     <div class="login-error" id="loginError">
                         <i class="fas fa-exclamation-circle"></i>
                         <span id="loginErrorMsg">Invalid credentials</span>
                     </div>
+
                     <div class="login-hint">
                         <strong>Demo credentials:</strong> admin / admin123
                     </div>
                 </div>
             </div>
 
+            <!-- ADMIN PANEL VIEW -->
             <div id="adminPanelView" style="display:none;">
                 <div class="admin-header">
                     <div class="admin-header-content">
@@ -1714,9 +1519,15 @@
                             <i class="fas fa-search"></i>
                             <input type="text" id="adminSearchInput" placeholder="Search mentors by name, field, or skill…" oninput="renderAdminTable()" />
                         </div>
-                        <button class="chip active" data-filter="all" onclick="setAdminFilter(this)"><i class="fas fa-users"></i> All</button>
-                        <button class="chip" data-filter="online" onclick="setAdminFilter(this)"><i class="fas fa-circle" style="color:#27ae60;"></i> Online</button>
-                        <button class="chip" data-filter="offline" onclick="setAdminFilter(this)"><i class="fas fa-circle" style="color:#95a5a6;"></i> Offline</button>
+                        <button class="chip active" data-filter="all" onclick="setAdminFilter(this)">
+                            <i class="fas fa-users"></i> All
+                        </button>
+                        <button class="chip" data-filter="online" onclick="setAdminFilter(this)">
+                            <i class="fas fa-circle" style="color:#27ae60;"></i> Online
+                        </button>
+                        <button class="chip" data-filter="offline" onclick="setAdminFilter(this)">
+                            <i class="fas fa-circle" style="color:#95a5a6;"></i> Offline
+                        </button>
                     </div>
                 </div>
                 <div class="table-wrap">
@@ -1846,7 +1657,9 @@
     </div>
 
     <script>
-        // ━━━ STUDENT LOGIN CREDENTIALS ━━━
+        // ═══════════════════════════════════════════
+        // CREDENTIALS
+        // ═══════════════════════════════════════════
         const STUDENT_CREDENTIALS = {
             username: 'student',
             password: 'student123',
@@ -1873,7 +1686,9 @@
         const STUDENT_SESSION_KEY = 'mentorStudent_session_v1';
         const USER_STORAGE_KEY = 'mentorUserProfile_v1';
 
-        // ━━━ STUDENT GATE ━━━
+        // ═══════════════════════════════════════════
+        // STUDENT LOGIN GATE
+        // ═══════════════════════════════════════════
         function attemptStudentLogin() {
             const username = document.getElementById('studentUsername').value.trim();
             const password = document.getElementById('studentPassword').value;
@@ -1892,11 +1707,9 @@
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in…';
 
             setTimeout(() => {
-                // Check student credentials
                 if (username === STUDENT_CREDENTIALS.username && password === STUDENT_CREDENTIALS.password) {
                     completeStudentLogin(STUDENT_CREDENTIALS.profile, remember);
                 }
-                // Also allow admin to log in from here
                 else if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
                     completeStudentLogin(ADMIN_CREDENTIALS.profile, remember);
                 }
@@ -1913,7 +1726,6 @@
         }
 
         function completeStudentLogin(profile, remember) {
-            // Persist user profile
             try {
                 if (remember) {
                     localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(profile));
@@ -1927,20 +1739,17 @@
             currentUser = { ...profile };
             saveUserProfile(currentUser);
 
-            // Hide the gate
             document.getElementById('studentGate').classList.add('hidden');
             document.body.classList.remove('app-locked');
             document.getElementById('app').classList.add('show');
 
-            // Reset button
             const btn = document.getElementById('studentLoginBtn');
             btn.classList.remove('loading');
             btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
 
-            // Refresh UI
             renderUserInfo();
             renderMatchMentors('all');
-            checkExistingSession();
+            checkExistingAdminSession();
             renderSteps();
             renderDeadlines('all');
             renderHabits();
@@ -1996,7 +1805,9 @@
             document.getElementById('studentError').classList.remove('show');
         }
 
-        // ━━━ USER PROFILE ━━━
+        // ═══════════════════════════════════════════
+        // USER PROFILE + DROPDOWN
+        // ═══════════════════════════════════════════
         let currentUser = {
             initials: 'JD',
             name: 'John Doe',
@@ -2028,7 +1839,7 @@
             document.getElementById('dropdownAvatar').textContent = currentUser.initials || '?';
             document.getElementById('dropdownName').textContent = currentUser.name || 'User';
             document.getElementById('dropdownEmail').textContent = currentUser.email || '';
-            const badge = document.querySelector('.user-dropdown-badge');
+            const badge = document.getElementById('dropdownRoleBadge');
             if (badge) {
                 const role = currentUser.role || 'Student';
                 const icon = role === 'Admin' ? 'fa-user-shield' : 'fa-graduation-cap';
@@ -2036,7 +1847,6 @@
             }
         }
 
-        // ━━━ USER MENU ━━━
         function toggleUserMenu(event) {
             if (event) event.stopPropagation();
             const dropdown = document.getElementById('userDropdown');
@@ -2086,24 +1896,19 @@
                         sessionStorage.removeItem(STUDENT_SESSION_KEY);
                         sessionStorage.removeItem(USER_STORAGE_KEY);
                         localStorage.removeItem(STUDENT_SESSION_KEY);
-                        // Keep USER_STORAGE_KEY in localStorage for convenience — remove if you want a full reset
                     } catch(e) {}
 
-                    // Reset user to default so the login screen shows fresh
                     currentUser = { ...STUDENT_CREDENTIALS.profile };
                     renderUserInfo();
 
-                    // Show the gate again
                     document.getElementById('studentGate').classList.remove('hidden');
                     document.body.classList.add('app-locked');
                     document.getElementById('app').classList.remove('show');
 
-                    // Clear inputs
                     document.getElementById('studentUsername').value = '';
                     document.getElementById('studentPassword').value = '';
                     document.getElementById('studentRemember').checked = false;
 
-                    // Also log out of admin if logged in
                     if (isAdminLoggedIn) {
                         isAdminLoggedIn = false;
                         try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
@@ -2117,7 +1922,7 @@
             );
         }
 
-        // ━━━ PROFILE MODAL ━━━
+        // ── Profile Modal ──
         function openProfileModal() {
             const modal = document.createElement('div');
             modal.className = 'modal-backdrop';
@@ -2188,7 +1993,7 @@
             showToast('✅ Profile updated!');
         }
 
-        // ━━━ SETTINGS MODAL ━━━
+        // ── Settings Modal ──
         function openSettingsModal() {
             const darkOn = document.body.classList.contains('dark');
             const modal = document.createElement('div');
@@ -2244,8 +2049,11 @@
             document.body.style.overflow = '';
         }
 
-        // ━━━ ADMIN LOGIN ━━━
+        // ═══════════════════════════════════════════
+        // ADMIN LOGIN
+        // ═══════════════════════════════════════════
         let isAdminLoggedIn = false;
+
         function attemptLogin() {
             const username = document.getElementById('loginUsername').value.trim();
             const password = document.getElementById('loginPassword').value;
@@ -2304,7 +2112,7 @@
             }
         }
 
-        function checkExistingSession() {
+        function checkExistingAdminSession() {
             try {
                 if (sessionStorage.getItem(SESSION_KEY) === '1') {
                     isAdminLoggedIn = true;
@@ -2320,14 +2128,76 @@
             }
         }
 
-        // ━━━ DEFAULT MENTORS ━━━
+        // ═══════════════════════════════════════════
+        // MENTOR DATA + HELPERS
+        // ═══════════════════════════════════════════
         const DEFAULT_MENTORS = [
-            { id: 'm1', name: 'Ms. Jerica Estacio', field: 'Tutor Guidelines', category: 'Tutoring', avatar: '#7c5cfc', photo: "Image/820279605_2267664040696834_305412036933529098_n.jpg", tags: ['Python', 'ML', 'Career'], match: 94, online: true, location: 'Remebella, Buguey, Cagayan', bio: 'Passionate about helping students break into tech and land their first role.', experience: '1 year in ML engineering · 12 months mentoring', languages: 'English, Ilocano, Filipino', availability: 'Mon–Fri, 6–9 PM (PHT)', rating: 4.9, sessions: 10, responseTime: '< 2 minutes' },
-            { id: 'm2', name: 'Mr. Darill Torrena', field: 'Step-by-Step Tips', category: 'Design', avatar: '#2d9cdb', photo: "Image/813930866_1853112442523667_8312152500615360695_n.jpg", tags: ['UI/UX', 'Figma', 'Portfolio'], match: 88, online: false, location: 'Fula, Buguey, Cagayan', bio: 'Product designer with a love for teaching.', experience: '1 year in product design · 12 months mentoring', languages: 'English, Ilocano, Filipino', availability: 'Tue–Sat, 2–6 PM (PHT)', rating: 4.8, sessions: 9, responseTime: '< 6 minutes' },
-            { id: 'm3', name: 'Mr. Mark AJ Daud', field: 'Web Development', category: 'Development', avatar: '#8e44ad', photo: "Image/815366708_1102082262340820_921208249154494260_n.jpg", tags: ['React', 'Node', 'Full‑Stack'], match: 85, online: false, location: 'Fula, Buguey, Cagayan', bio: 'Full-stack developer who has shipped products used by millions.', experience: '1 year in web development · 12 months mentoring', languages: 'English, Ilocano, Filipino', availability: 'Sat–Sun, 1–5 PM (PHT)', rating: 4.9, sessions: 8, responseTime: '< 5 minutes' },
-            { id: 'm4', name: 'Mr. Justine Timbreza', field: 'Software Engineering', category: 'Development', avatar: '#27ae60', photo: "Image/814380085_1620680176211480_1952548881286258058_n.jpg", tags: ['Java', 'System Design'], match: 76, online: true, location: 'M. Antiporda, Buguey, Cagayan', bio: 'Backend engineer who loves system design and clean code.', experience: '1 year in backend engineering · 12 months mentoring', languages: 'English, Ilocano, Filipino', availability: 'Mon–Thu, 8–11 PM (PHT)', rating: 4.8, sessions: 7, responseTime: '< 6 minutes' },
-            { id: 'm5', name: 'Mr. Lordwin Costales', field: 'Business Strategy', category: 'Business', avatar: '#e67e22', photo: "Image/814952437_1863241685053683_6683719290193517957_n.jpg", tags: ['Startups', 'Marketing'], match: 92, online: true, location: 'M. Antiporda, Buguey, Cagayan', bio: 'Startup strategist and marketer.', experience: '1 year in startups · 12 months mentoring', languages: 'English, Ilocano, Filipino', availability: 'Mon–Fri, 10 AM–12 PM (PHT)', rating: 4.9, sessions: 6, responseTime: '< 7 minutes' },
-            { id: 'm6', name: 'Mr. Jhan Rhey Arzadon', field: 'Cybersecurity', category: 'Security', avatar: '#c0392b', photo: "Image/817867165_1743847626907002_1540315198359606662_n.jpg", tags: ['Security', 'Network'], match: 79, online: true, location: 'Fula, Buguey, Cagayan', bio: 'Cybersecurity specialist focused on network defense and ethical hacking.', experience: '1 year in cybersecurity · 1 year mentoring', languages: 'English, Ilocano, Filipino', availability: 'Wed–Sun, 7–10 PM (PHT)', rating: 4.7, sessions: 5, responseTime: '< 5 minutes' },
+            {
+                id: 'm1', name: 'Ms. Jerica Estacio', field: 'Tutor Guidelines', category: 'Tutoring',
+                avatar: '#7c5cfc', photo: "Image/820279605_2267664040696834_305412036933529098_n.jpg",
+                tags: ['Python', 'ML', 'Career'], match: 94, online: true,
+                location: 'Remebella, Buguey, Cagayan',
+                bio: 'Passionate about helping students break into tech and land their first role.',
+                experience: '1 year in ML engineering · 12 months mentoring',
+                languages: 'English, Ilocano, Filipino',
+                availability: 'Mon–Fri, 6–9 PM (PHT)', rating: 4.9, sessions: 10,
+                responseTime: '< 2 minutes',
+            },
+            {
+                id: 'm2', name: 'Mr. Darill Torrena', field: 'Step-by-Step Tips', category: 'Design',
+                avatar: '#2d9cdb', photo: "Image/813930866_1853112442523667_8312152500615360695_n.jpg",
+                tags: ['UI/UX', 'Figma', 'Portfolio'], match: 88, online: false,
+                location: 'Fula, Buguey, Cagayan',
+                bio: 'Product designer with a love for teaching.',
+                experience: '1 year in product design · 12 months mentoring',
+                languages: 'English, Ilocano, Filipino',
+                availability: 'Tue–Sat, 2–6 PM (PHT)', rating: 4.8, sessions: 9,
+                responseTime: '< 6 minutes',
+            },
+            {
+                id: 'm3', name: 'Mr. Mark AJ Daud', field: 'Web Development', category: 'Development',
+                avatar: '#8e44ad', photo: "Image/815366708_1102082262340820_921208249154494260_n.jpg",
+                tags: ['React', 'Node', 'Full‑Stack'], match: 85, online: false,
+                location: 'Fula, Buguey, Cagayan',
+                bio: 'Full-stack developer who has shipped products used by millions.',
+                experience: '1 year in web development · 12 months mentoring',
+                languages: 'English, Ilocano, Filipino',
+                availability: 'Sat–Sun, 1–5 PM (PHT)', rating: 4.9, sessions: 8,
+                responseTime: '< 5 minutes',
+            },
+            {
+                id: 'm4', name: 'Mr. Justine Timbreza', field: 'Software Engineering', category: 'Development',
+                avatar: '#27ae60', photo: "Image/814380085_1620680176211480_1952548881286258058_n.jpg",
+                tags: ['Java', 'System Design'], match: 76, online: true,
+                location: 'M. Antiporda, Buguey, Cagayan',
+                bio: 'Backend engineer who loves system design and clean code.',
+                experience: '1 year in backend engineering · 12 months mentoring',
+                languages: 'English, Ilocano, Filipino',
+                availability: 'Mon–Thu, 8–11 PM (PHT)', rating: 4.8, sessions: 7,
+                responseTime: '< 6 minutes',
+            },
+            {
+                id: 'm5', name: 'Mr. Lordwin Costales', field: 'Business Strategy', category: 'Business',
+                avatar: '#e67e22', photo: "Image/814952437_1863241685053683_6683719290193517957_n.jpg",
+                tags: ['Startups', 'Marketing'], match: 92, online: true,
+                location: 'M. Antiporda, Buguey, Cagayan',
+                bio: 'Startup strategist and marketer.',
+                experience: '1 year in startups · 12 months mentoring',
+                languages: 'English, Ilocano, Filipino',
+                availability: 'Mon–Fri, 10 AM–12 PM (PHT)', rating: 4.9, sessions: 6,
+                responseTime: '< 7 minutes',
+            },
+            {
+                id: 'm6', name: 'Mr. Jhan Rhey Arzadon', field: 'Cybersecurity', category: 'Security',
+                avatar: '#c0392b', photo: "Image/817867165_1743847626907002_1540315198359606662_n.jpg",
+                tags: ['Security', 'Network'], match: 79, online: true,
+                location: 'Fula, Buguey, Cagayan',
+                bio: 'Cybersecurity specialist focused on network defense and ethical hacking.',
+                experience: '1 year in cybersecurity · 1 year mentoring',
+                languages: 'English, Ilocano, Filipino',
+                availability: 'Wed–Sun, 7–10 PM (PHT)', rating: 4.7, sessions: 5,
+                responseTime: '< 5 minutes',
+            },
         ];
 
         const STORAGE_KEY = 'mentorAdmin_v1';
@@ -2376,10 +2246,11 @@
             return [];
         }
 
-        // ━━━ MATCH ━━━
+        // ═══════════════════════════════════════════
+        // MATCH TAB
+        // ═══════════════════════════════════════════
         function renderMatchMentors(filter) {
             const grid = document.getElementById('mentorGrid');
-            if (!grid) return;
             let filtered = [...mentors];
             if (filter === 'high') filtered = filtered.filter(m => m.match >= 85);
             else if (filter === 'online') filtered = filtered.filter(m => m.online);
@@ -2416,7 +2287,6 @@
         }
         function filterMentors(filter) { renderMatchMentors(filter); }
 
-        // ━━━ MENTOR PROFILE ━━━
         function openMentorProfile(name) {
             const m = mentors.find(x => x.name === name);
             if (!m) return;
@@ -2472,24 +2342,24 @@
                 </div>`;
             modal.addEventListener('click', closeMentorProfile);
             document.body.appendChild(modal);
-            const esc = (e) => { if (e.key === 'Escape') closeMentorProfile(); };
-            document.addEventListener('keydown', esc);
-            modal._esc = esc;
+            const escHandler = (e) => { if (e.key === 'Escape') closeMentorProfile(); };
+            document.addEventListener('keydown', escHandler);
+            modal._escHandler = escHandler;
             document.body.style.overflow = 'hidden';
         }
         function closeMentorProfile() {
             const modal = document.querySelector('.mentor-modal-backdrop');
             if (modal) {
-                if (modal._esc) document.removeEventListener('keydown', modal._esc);
+                if (modal._escHandler) document.removeEventListener('keydown', modal._escHandler);
                 modal.remove();
             }
             document.body.style.overflow = '';
         }
 
-        // ━━━ ADMIN ━━━
+        // ═══════════════════════════════════════════
+        // ADMIN PANEL RENDERING
+        // ═══════════════════════════════════════════
         function renderAdminStats() {
-            const el = document.getElementById('adminStatsGrid');
-            if (!el) return;
             const total = mentors.length;
             const online = mentors.filter(m => m.online).length;
             const avgRating = total ? (mentors.reduce((s, m) => s + (parseFloat(m.rating) || 0), 0) / total).toFixed(1) : '0.0';
@@ -2500,7 +2370,7 @@
                 { icon: 'fa-star', color: '#f6d186', value: avgRating, label: 'Average Rating' },
                 { icon: 'fa-comments', color: '#e67e22', value: totalSessions, label: 'Total Sessions' },
             ];
-            el.innerHTML = stats.map(s => `
+            document.getElementById('adminStatsGrid').innerHTML = stats.map(s => `
                 <div class="stat-card">
                     <div class="icon" style="background:${s.color}22; color:${s.color};"><i class="fas ${s.icon}"></i></div>
                     <div class="value">${s.value}</div>
@@ -2510,8 +2380,6 @@
         }
 
         function renderAdminTable() {
-            const tbody = document.getElementById('adminMentorTableBody');
-            if (!tbody) return;
             const query = (document.getElementById('adminSearchInput').value || '').trim().toLowerCase();
             let list = mentors.filter(m => {
                 if (activeFilter === 'online' && !m.online) return false;
@@ -2523,6 +2391,7 @@
                 return true;
             });
             document.getElementById('adminTableCount').textContent = `${list.length} mentor${list.length !== 1 ? 's' : ''}`;
+            const tbody = document.getElementById('adminMentorTableBody');
             if (list.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="6"><div class="empty-row"><i class="fas fa-user-slash"></i><strong>No mentors found</strong><p style="margin-top:6px; font-size:0.85rem;">Try adjusting your search or filter.</p></div></td></tr>`;
                 return;
@@ -2547,26 +2416,37 @@
                                 </div>
                             </div>
                         </td>
-                        <td><span class="badge" style="background:${m.avatar}22; color:${m.avatar};">${escapeHtml(m.category || '—')}</span>${tagsShort ? `<div style="font-size:0.7rem; color:var(--text-muted); margin-top:6px;">${escapeHtml(tagsShort)}</div>` : ''}</td>
+                        <td>
+                            <span class="badge" style="background:${m.avatar}22; color:${m.avatar};">${escapeHtml(m.category || '—')}</span>
+                            ${tagsShort ? `<div style="font-size:0.7rem; color:var(--text-muted); margin-top:6px;">${escapeHtml(tagsShort)}</div>` : ''}
+                        </td>
                         <td><span class="badge-match"><i class="fas fa-bolt"></i> ${m.match}%</span></td>
-                        <td><div style="font-weight:700;">${m.rating} <i class="fas fa-star" style="color:#f6d186; font-size:0.75rem;"></i></div><div style="font-size:0.7rem; color:var(--text-muted);">${m.sessions} sessions</div></td>
+                        <td>
+                            <div style="font-weight:700;">${m.rating} <i class="fas fa-star" style="color:#f6d186; font-size:0.75rem;"></i></div>
+                            <div style="font-size:0.7rem; color:var(--text-muted);">${m.sessions} sessions</div>
+                        </td>
                         <td><span class="badge ${statusCls}"><i class="fas fa-circle" style="font-size:0.5rem;"></i> ${statusLabel}</span></td>
-                        <td><div class="row-actions">
-                            <button class="row-btn toggle-${m.online ? 'on' : 'off'}" onclick="toggleOnline('${m.id}')"><i class="fas fa-${m.online ? 'toggle-on' : 'toggle-off'}"></i></button>
-                            <button class="row-btn edit" onclick="openMentorForm('${m.id}')"><i class="fas fa-pen"></i></button>
-                            <button class="row-btn delete" onclick="deleteMentor('${m.id}')"><i class="fas fa-trash"></i></button>
-                        </div></td>
+                        <td>
+                            <div class="row-actions">
+                                <button class="row-btn toggle-${m.online ? 'on' : 'off'}" onclick="toggleOnline('${m.id}')" title="${m.online ? 'Set offline' : 'Set online'}"><i class="fas fa-${m.online ? 'toggle-on' : 'toggle-off'}"></i></button>
+                                <button class="row-btn edit" onclick="openMentorForm('${m.id}')" title="Edit mentor"><i class="fas fa-pen"></i></button>
+                                <button class="row-btn delete" onclick="deleteMentor('${m.id}')" title="Delete mentor"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
                     </tr>
                 `;
             }).join('');
         }
+
         function renderAdmin() { renderAdminStats(); renderAdminTable(); }
+
         function setAdminFilter(btn) {
             activeFilter = btn.dataset.filter;
             document.querySelectorAll('#section-admin .chip').forEach(c => c.classList.remove('active'));
             btn.classList.add('active');
             renderAdminTable();
         }
+
         function toggleOnline(id) {
             const m = mentors.find(x => x.id === id);
             if (!m) return;
@@ -2630,12 +2510,14 @@
             modal._esc = esc;
             setTimeout(() => document.getElementById('fName').focus(), 100);
         }
+
         function closeMentorForm() {
             const modal = document.querySelector('.modal-backdrop');
             if (modal) { if (modal._esc) document.removeEventListener('keydown', modal._esc); modal.remove(); }
             document.body.style.overflow = '';
             editingId = null;
         }
+
         function pickColor(color) {
             document.querySelectorAll('#colorRow .color-swatch').forEach(s => s.classList.toggle('active', s.dataset.color === color));
             document.getElementById('avatarPreview').style.background = color;
@@ -2721,17 +2603,33 @@
             document.body.style.overflow = '';
         }
 
-        // ━━━ CHAT ━━━
+        // ═══════════════════════════════════════════
+        // CHAT
+        // ═══════════════════════════════════════════
         let activeChatMentor = null, replyIndex = 0, recognition = null, isListening = false;
-        const mentorReplies = { default: ["That's a great point!", "I understand. Can you tell me more?", "Interesting! Here's what I'd suggest...", "Let's break that down.", "Great question!"] };
-        function openChat(name) {
-            const mentor = mentors.find(m => m.name === name);
+        const mentorReplies = {
+            default: [
+                "That's a great point! Let's explore that further.",
+                "I understand. Can you tell me more about your goals?",
+                "Interesting! Here's what I'd suggest...",
+                "Let's break that down into actionable steps.",
+                "Great question — let me walk you through it.",
+                "Keep going, you're on the right track!",
+            ]
+        };
+
+        function openChat(mentorName) {
+            const mentor = mentors.find(m => m.name === mentorName);
             if (!mentor) return;
             const existing = document.getElementById('chatOverlay');
             if (existing) existing.remove();
-            activeChatMentor = mentor; replyIndex = 0;
+            stopSpeaking();
+            stopVoiceInput();
+            activeChatMentor = mentor;
+            replyIndex = 0;
             const overlay = document.createElement('div');
-            overlay.className = 'chat-overlay'; overlay.id = 'chatOverlay';
+            overlay.className = 'chat-overlay';
+            overlay.id = 'chatOverlay';
             overlay.innerHTML = `
                 <div class="chat-header">
                     <div class="chat-avatar" style="background:${mentor.avatar}"><img src="${mentor.photo}" onerror="this.style.display='none'" /><span class="online-dot"></span></div>
@@ -2739,13 +2637,19 @@
                     <div class="chat-header-actions"><button class="chat-close" onclick="closeChat()"><i class="fas fa-times"></i></button></div>
                 </div>
                 <div class="chat-messages" id="chatMessages"></div>
+                <div class="chat-speaking-indicator" id="speakingIndicator">
+                    <span>Mentor is speaking</span>
+                    <div class="wave"><span></span><span></span><span></span><span></span></div>
+                </div>
                 <div class="chat-input-area">
                     <input type="text" id="chatInput" placeholder="Type or speak your message…" onkeydown="if(event.key==='Enter') sendChatMessage()" autocomplete="off" />
                     <button class="chat-voice-btn" id="voiceBtn" onclick="toggleVoiceInput()"><i class="fas fa-microphone"></i></button>
                     <button class="chat-send-btn" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
                 </div>`;
             document.body.appendChild(overlay);
-            addChatMessage('mentor', `Hi! I'm ${mentor.name}. What would you like to work on first?`);
+            const greeting = `Hi! I'm ${mentor.name}, your ${mentor.field} mentor. What would you like to work on first?`;
+            addChatMessage('mentor', greeting);
+            try { speakText(greeting, mentor); } catch(e) {}
             setTimeout(() => document.getElementById('chatInput')?.focus(), 150);
         }
         function closeChat() {
@@ -2780,24 +2684,62 @@
                 const replies = mentorReplies[mentor.name] || mentorReplies.default;
                 const reply = replies[replyIndex % replies.length]; replyIndex++;
                 addChatMessage('mentor', reply);
+                try { speakText(reply, mentor); } catch(e) {}
             }, 900 + Math.random() * 700);
         }
-        function stopSpeaking() {}
+        function speakText(text, mentor) {
+            if (!('speechSynthesis' in window)) return;
+            try {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 0.95; utterance.pitch = 1.0; utterance.volume = 1.0;
+                const voices = window.speechSynthesis.getVoices();
+                if (voices.length > 0) {
+                    const femaleNames = ['female', 'samantha', 'karen', 'victoria', 'zira', 'susan', 'fiona'];
+                    const maleNames = ['male', 'daniel', 'alex', 'david', 'mark', 'fred'];
+                    const mentorFirst = mentor.name.split(' ')[0].toLowerCase();
+                    const femaleMentors = ['jerica', 'darill', 'sarah', 'aisha', 'elena', 'maya'];
+                    const isFemale = femaleMentors.includes(mentorFirst);
+                    let chosen = null;
+                    for (const v of voices) {
+                        const vn = v.name.toLowerCase();
+                        if (isFemale && femaleNames.some(f => vn.includes(f))) { chosen = v; break; }
+                        if (!isFemale && maleNames.some(m => vn.includes(m))) { chosen = v; break; }
+                    }
+                    if (chosen) utterance.voice = chosen;
+                }
+                const indicator = document.getElementById('speakingIndicator');
+                if (indicator) indicator.classList.add('active');
+                utterance.onend = () => { if (indicator) indicator.classList.remove('active'); };
+                utterance.onerror = () => { if (indicator) indicator.classList.remove('active'); };
+                window.speechSynthesis.speak(utterance);
+            } catch (e) {}
+        }
+        function stopSpeaking() {
+            if ('speechSynthesis' in window) {
+                try { window.speechSynthesis.cancel(); } catch(e) {}
+            }
+            const indicator = document.getElementById('speakingIndicator');
+            if (indicator) indicator.classList.remove('active');
+        }
         function toggleVoiceInput() { isListening ? stopVoiceInput() : startVoiceInput(); }
         function startVoiceInput() {
             const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SR) { showToast('⚠️ Voice input not supported.'); return; }
             try {
                 recognition = new SR(); recognition.lang = 'en-US';
+                recognition.interimResults = false; recognition.maxAlternatives = 1;
                 recognition.onstart = () => {
                     isListening = true;
                     const b = document.getElementById('voiceBtn');
                     if (b) { b.classList.add('listening'); b.innerHTML = '<i class="fas fa-stop"></i>'; }
+                    showToast('🎤 Listening… speak now');
                 };
                 recognition.onresult = (e) => {
                     document.getElementById('chatInput').value = e.results[0][0].transcript;
                     setTimeout(() => sendChatMessage(), 300);
                 };
+                recognition.onerror = () => stopVoiceInput();
                 recognition.onend = () => stopVoiceInput();
                 recognition.start();
             } catch(e) { stopVoiceInput(); }
@@ -2809,7 +2751,9 @@
             if (b) { b.classList.remove('listening'); b.innerHTML = '<i class="fas fa-microphone"></i>'; }
         }
 
-        // ━━━ ACTIONS ━━━
+        // ═══════════════════════════════════════════
+        // ACTIONS
+        // ═══════════════════════════════════════════
         function findMatch() {
             if (mentors.length === 0) { showToast('⚠️ No mentors available.'); return; }
             showToast('🔍 Matching you…');
@@ -2820,35 +2764,39 @@
             }, 800);
         }
         function matchMentor(name) { showToast(`🤝 Opening chat with ${name}…`); openChat(name); }
+
         function launchConfetti() {
-            const c = document.createElement('div');
-            c.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1000;overflow:hidden;';
-            document.body.appendChild(c);
-            const colors = ['#f5576c', '#f6d186', '#27ae60', '#4f2ee8', '#f39c12', '#e74c3c'];
+            const container = document.createElement('div');
+            container.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1000;overflow:hidden;';
+            document.body.appendChild(container);
+            const colors = ['#f5576c', '#f6d186', '#27ae60', '#4f2ee8', '#f39c12', '#e74c3c', '#2ecc71', '#3498db'];
             for (let i = 0; i < 60; i++) {
                 const el = document.createElement('div');
                 el.style.cssText = `position:absolute;left:${Math.random() * 100}%;width:${Math.random() * 8 + 4}px;height:${Math.random() * 8 + 4}px;background:${colors[Math.floor(Math.random() * colors.length)]};border-radius:${Math.random() > 0.5 ? '50%' : '2px'};animation:confettiFall linear forwards;animation-duration:${Math.random() * 2 + 1.5}s;animation-delay:${Math.random() * 0.8}s;`;
-                c.appendChild(el);
+                container.appendChild(el);
             }
-            setTimeout(() => c.remove(), 3000);
+            setTimeout(() => container.remove(), 3000);
         }
 
-        // ━━━ STEPS / DEADLINES / HABITS / COMM / CAREER / TIPS (condensed) ━━━
+        // ═══════════════════════════════════════════
+        // STEPS / DEADLINES / HABITS / COMM / CAREER / TIPS
+        // ═══════════════════════════════════════════
         const stepsData = [
-            { title: 'Define your goals', desc: 'Clarify what you want to achieve.', done: false },
-            { title: 'Choose a mentor', desc: 'Review matches and select your guide.', done: false },
-            { title: 'Set your schedule', desc: 'Plan weekly check‑ins.', done: false },
-            { title: 'Build your skills', desc: 'Follow the learning path.', done: false },
-            { title: 'Review & reflect', desc: 'Monthly reviews.', done: false },
+            { title: 'Define your goals', desc: 'Clarify what you want to achieve in the next 6 months.', done: false },
+            { title: 'Choose a mentor', desc: 'Review matches and select your primary guide.', done: false },
+            { title: 'Set your schedule', desc: 'Plan weekly check‑ins and milestone reviews.', done: false },
+            { title: 'Build your skills', desc: 'Follow the curated learning path with your mentor.', done: false },
+            { title: 'Review & reflect', desc: 'Monthly progress reviews to adjust your roadmap.', done: false },
         ];
         function renderSteps() {
-            const c = document.getElementById('stepsContainer'); if (!c) return;
+            const container = document.getElementById('stepsContainer');
             const doneCount = stepsData.filter(s => s.done).length;
-            const pct = Math.round((doneCount / stepsData.length) * 100);
+            const total = stepsData.length;
+            const pct = Math.round((doneCount / total) * 100);
             document.getElementById('stepsProgressFill').style.width = pct + '%';
             document.getElementById('stepsProgressLabel').textContent = pct + '%';
-            document.getElementById('stepsBadge').textContent = `${doneCount}/${stepsData.length}`;
-            c.innerHTML = stepsData.map((s, i) => `
+            document.getElementById('stepsBadge').textContent = `${doneCount}/${total}`;
+            container.innerHTML = stepsData.map((s, i) => `
                 <div class="step ${s.done ? 'completed' : ''}">
                     <div class="step-num">${i + 1}</div>
                     <div class="step-content"><strong>${s.title}</strong><p>${s.done ? '✅ Completed!' : s.desc}</p></div>
@@ -2867,7 +2815,7 @@
         ];
         let currentDeadlineFilter = 'all';
         function renderDeadlines(filter) {
-            const list = document.getElementById('deadlineList'); if (!list) return;
+            const list = document.getElementById('deadlineList');
             let filtered = [...deadlines];
             if (filter === 'pending') filtered = filtered.filter(d => !d.done);
             if (filter === 'done') filtered = filtered.filter(d => d.done);
@@ -2881,20 +2829,20 @@
                 return;
             }
             list.innerHTML = filtered.map(d => `
-                <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px;">
-                    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-                        <span style="width:10px;height:10px;border-radius:50%;background:${d.done ? '#27ae60' : '#f39c12'};"></span>
-                        <span style="${d.done ? 'text-decoration:line-through;color:var(--text-muted);' : 'font-weight:600;'}">${d.title}</span>
-                        <span style="font-size:0.8rem;color:var(--text-muted);"><i class="far fa-calendar-alt"></i> ${d.date}</span>
-                        <span style="font-size:0.6rem;font-weight:700;padding:2px 10px;border-radius:50px;text-transform:uppercase;background:${d.priority === 'high' ? '#fee2e2' : d.priority === 'medium' ? '#fef3c7' : '#d1fae5'};color:${d.priority === 'high' ? '#b91c1c' : d.priority === 'medium' ? '#b45309' : '#065f46'};">${d.priority}</span>
+                <div class="deadline-item">
+                    <div class="deadline-info">
+                        <span class="dot" style="background:${d.done ? '#27ae60' : '#f39c12'}"></span>
+                        <span class="d-title" style="${d.done ? 'text-decoration:line-through;color:var(--text-muted);' : ''}">${d.title}</span>
+                        <span class="d-date"><i class="far fa-calendar-alt"></i> ${d.date}</span>
+                        <span class="badge-priority ${d.priority}">${d.priority}</span>
                     </div>
-                    <div style="display:flex;gap:6px;">
-                        <button onclick="toggleDeadline('${d.id}')" style="background:var(--primary-soft);border:none;padding:4px 14px;border-radius:50px;font-weight:600;font-size:0.75rem;color:var(--primary);cursor:pointer;">${d.done ? 'Undo' : 'Done'}</button>
-                        <button onclick="deleteDeadline('${d.id}')" style="background:#fee2e2;color:#b91c1c;border:none;padding:4px 14px;border-radius:50px;font-weight:600;font-size:0.75rem;cursor:pointer;">✕</button>
+                    <div class="deadline-actions">
+                        <button onclick="toggleDeadline('${d.id}')">${d.done ? 'Undo' : 'Done'}</button>
+                        <button class="danger" onclick="deleteDeadline('${d.id}')">✕</button>
                     </div>
                 </div>
             `).join('');
-            document.querySelectorAll('#section-deadlines .filter-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+            document.querySelectorAll('#section-deadlines .filter-btn').forEach(btn => { btn.classList.toggle('active', btn.dataset.filter === filter); });
             currentDeadlineFilter = filter || 'all';
         }
         function filterDeadlines(f) { renderDeadlines(f); }
@@ -2927,14 +2875,12 @@
         ];
         let habits = [...habitsData];
         function renderHabits() {
-            const g = document.getElementById('habitGrid'); if (!g) return;
+            const g = document.getElementById('habitGrid');
             g.innerHTML = habits.map(h => `
-                <div style="background:var(--surface-2);padding:16px 18px;border-radius:16px;display:flex;align-items:center;gap:14px;border:1px solid var(--border);">
-                    <div style="width:44px;height:44px;border-radius:14px;background:var(--primary-soft);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;flex-shrink:0;"><i class="fas ${h.done ? 'fa-check-circle' : 'fa-circle'}"></i></div>
-                    <div style="flex:1;"><h5 style="font-size:0.95rem;">${h.label}</h5><p style="font-size:0.8rem;color:var(--text-muted);">${h.desc}</p>${h.streak > 0 ? `<span style="font-size:0.7rem;color:#f5576c;font-weight:600;">🔥 ${h.streak} day streak</span>` : ''}</div>
-                    <div onclick="toggleHabit('${h.id}')" style="width:44px;height:24px;background:${h.done ? 'var(--primary)' : 'var(--border-hover)'};border-radius:50px;position:relative;cursor:pointer;flex-shrink:0;">
-                        <span style="position:absolute;top:2px;left:${h.done ? '22px' : '2px'};width:20px;height:20px;background:#fff;border-radius:50%;transition:0.25s;"></span>
-                    </div>
+                <div class="habit-item">
+                    <div class="icon"><i class="fas ${h.done ? 'fa-check-circle' : 'fa-circle'}"></i></div>
+                    <div class="info"><h5>${h.label}</h5><p>${h.desc}</p>${h.streak > 0 ? `<span class="streak">🔥 ${h.streak} day streak</span>` : ''}</div>
+                    <div class="habit-toggle ${h.done ? 'active' : ''}" onclick="toggleHabit('${h.id}')"></div>
                 </div>
             `).join('');
         }
@@ -2961,7 +2907,7 @@
             return { label: 'Strong', cls: 'strong' };
         }
         function renderComm() {
-            const g = document.getElementById('commGrid'); if (!g) return;
+            const g = document.getElementById('commGrid');
             const avg = Math.round(commData.reduce((a, c) => a + c.score, 0) / commData.length);
             const s = document.getElementById('commSummary');
             if (s) s.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;background:linear-gradient(135deg,var(--surface-2),var(--primary-soft));border:1px solid var(--border);border-radius:18px;padding:16px 22px;margin-bottom:18px;"><div><div style="font-size:0.75rem;text-transform:uppercase;color:var(--text-muted);font-weight:600;">Overall Score</div><div style="font-size:1.8rem;font-weight:800;color:var(--primary);">${avg}%</div></div><div style="font-size:0.85rem;color:var(--text-soft);">${commData.filter(c => c.score >= 70).length} strong · ${commData.filter(c => c.score >= 40 && c.score < 70).length} building · ${commData.filter(c => c.score < 40).length} need focus</div></div>`;
@@ -2994,7 +2940,7 @@
         ];
         let currentCareerFilter = 'all';
         function renderCareer() {
-            const g = document.getElementById('careerGrid'); if (!g) return;
+            const g = document.getElementById('careerGrid');
             let list = [...careerData];
             if (currentCareerFilter === 'favorites') list = list.filter(c => c.favorite);
             if (list.length === 0) { g.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);"><i class="fas fa-heart-broken" style="font-size:2.5rem;color:var(--primary-light);display:block;margin-bottom:12px;"></i><p>No favorites yet.</p></div>`; return; }
@@ -3018,7 +2964,7 @@
         ];
         let currentTipFilter = 'all';
         function renderTips(filter) {
-            const g = document.getElementById('tipGrid'); if (!g) return;
+            const g = document.getElementById('tipGrid');
             let filtered = [...tipsData];
             if (filter && filter !== 'all') filtered = filtered.filter(t => t.category === filter);
             const dailyIdx = new Date().getDate() % tipsData.length;
@@ -3048,14 +2994,18 @@
         }
         function dismissDailyTip() { document.getElementById('dailyTipPopup')?.classList.remove('show'); }
 
-        // ━━━ DARK MODE ━━━
+        // ═══════════════════════════════════════════
+        // DARK MODE
+        // ═══════════════════════════════════════════
         function toggleDark() {
             document.body.classList.toggle('dark');
             const icon = document.querySelector('.dark-toggle i');
             if (icon) icon.className = document.body.classList.contains('dark') ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        // ━━━ NAVIGATION ━━━
+        // ═══════════════════════════════════════════
+        // NAVIGATION
+        // ═══════════════════════════════════════════
         document.querySelectorAll('.nav-tab').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
@@ -3065,12 +3015,14 @@
                 document.getElementById('section-' + section).classList.add('active');
                 if (section === 'comm') setTimeout(renderComm, 50);
                 if (section === 'career') renderCareer();
-                if (section === 'admin') checkExistingSession();
+                if (section === 'admin') checkExistingAdminSession();
                 if (section === 'match') renderMatchMentors(currentMentorFilter);
             });
         });
 
-        // ━━━ TOAST ━━━
+        // ═══════════════════════════════════════════
+        // TOAST
+        // ═══════════════════════════════════════════
         let toastTimer;
         function showToast(msg) {
             const el = document.getElementById('toast'); if (!el) return;
@@ -3080,7 +3032,9 @@
             toastTimer = setTimeout(() => el.classList.remove('show'), 3500);
         }
 
-        // ━━━ EXTRA STYLES ━━━
+        // ═══════════════════════════════════════════
+        // EXTRA STYLES
+        // ═══════════════════════════════════════════
         const extra = document.createElement('style');
         extra.textContent = `
             @keyframes shake {
@@ -3123,12 +3077,13 @@
         `;
         document.head.appendChild(extra);
 
-        // ━━━ INIT ━━━
+        // ═══════════════════════════════════════════
+        // INIT
+        // ═══════════════════════════════════════════
         function init() {
             loadMentors();
             loadUserProfile();
 
-            // Check if user is already logged in
             if (checkStudentSession()) {
                 document.getElementById('studentGate').classList.add('hidden');
                 document.body.classList.remove('app-locked');
@@ -3141,7 +3096,7 @@
 
             renderUserInfo();
             renderMatchMentors('all');
-            checkExistingSession();
+            checkExistingAdminSession();
             renderSteps();
             renderDeadlines('all');
             renderHabits();
